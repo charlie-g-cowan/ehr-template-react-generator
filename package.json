@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/charlie-g-cowan/ehr-template-react-generator/issues"
   },
-  "homepage": "https://github.com/charlie-g-cowan/ehr-template-react-generator#readme"
+  "homepage": "https://github.com/charlie-g-cowan/ehr-template-react-generator#readme",
+  "dependencies": {
+    "nhsuk-frontend": "^3.0.3"
+  }
 }
