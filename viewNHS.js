@@ -87,4 +87,4 @@ function jsonFormTextInputWithSuggestionsAndNoFreeTextToReactInput(jsonFormInput
     </div>;
 }
 
-export default JsonFormInputToReact;
+export default JsonFormInputToNHSReact;
