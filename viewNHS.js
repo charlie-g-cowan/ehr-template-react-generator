@@ -1,8 +1,9 @@
 import React from "react";
-import { Input, RadioGroup } from 'formsy-react-components';
-import { NHSFormControl, NHSFormGroup, NHSFormHint, NHSFormLabel } from "./nhsuk-frontend-react/NHSComponents";
+import NHSFormsyInput from "./NHSFormsyInput";
+import NHSFormsyCheckboxIndividual from "./NHSFormsyCheckboxIndividual";
+import NHSFormsyRadioGroup from "./NHSFormsyRadioGroup";
 
-function JsonFormInputToNHSReact(jsonFormInputObject) {
+function JsonFormInputToReact(jsonFormInputObject) {
     switch (jsonFormInputObject.type) {
         case "options":
             return jsonFormOptionsToReactRadioList(jsonFormInputObject);
@@ -27,12 +28,15 @@ function JsonFormInputToNHSReact(jsonFormInputObject) {
             return jsonFormDatetimeInputToReactInput(jsonFormInputObject);
             break;
         case "number":
-            if (jsonFormInputObject.numberType === 'integer') {
+            if (jsonFormInputObject.validations.numberType === 'integer') {
                 return jsonFormIntegerInputToReactInput(jsonFormInputObject);
-            } else if (jsonFormInputObject.numberType === 'decimal') {
+            } else if (jsonFormInputObject.validations.numberType === 'decimal') {
                 return jsonFormDecimalInputToReactInput(jsonFormInputObject);
             }
             return;
+            break;
+        case "boolean":
+            return jsonFormBooleanInputToReactInput(jsonFormInputObject);
             break;
         default:
             console.log(jsonFormInputObject.type);
@@ -40,90 +44,53 @@ function JsonFormInputToNHSReact(jsonFormInputObject) {
     }
 }
 
+
+function jsonFormBooleanInputToReactInput(jsonFormInputObject) {
+    return <NHSFormsyCheckboxIndividual name={jsonFormInputObject.name}
+                       key={jsonFormInputObject.key}
+                       label={jsonFormInputObject.label}
+                       help={jsonFormInputObject.help} value={false}
+    />;
+}
+
 function jsonFormOptionsToReactRadioList(jsonFormInputObject) {
-    return <NHSFormGroup>
-        <fieldset className="nhsuk-fieldset" aria-describedby="example-hint">
-            <legend className="nhsuk-fieldset__legend">
-                {jsonFormInputObject.label}
-            </legend>
-            <NHSFormHint>
-                {jsonFormInputObject.help}
-            </NHSFormHint>
-            <div className="nhsuk-radios" key={jsonFormInputObject.key}>
-                {jsonFormInputObject.inputOptions.map((option) => {
-                    return <div className="nhsuk-radios__item">
-                        <input className="nhsuk-radios__input" name={jsonFormInputObject.name} type="radio"
-                               value={option.value}/>
-                        <label className="nhsuk-label nhsuk-radios__label">
-                            {option.label}
-                        </label>
-                    </div>;
-                })
-                }
-            </div>
-        </fieldset>
-    </NHSFormGroup>;
-    return <RadioGroup name={jsonFormInputObject.name}
+    return <NHSFormsyRadioGroup name={jsonFormInputObject.name}
                        key={jsonFormInputObject.key}
                        label={jsonFormInputObject.label}
                        help={jsonFormInputObject.help}
                        options={jsonFormInputObject.inputOptions}
-                       required
+        // required
     />;
 }
 
 function jsonFormTextInputToReactInput(jsonFormInputObject) {
-    return <NHSFormGroup>
-        <NHSFormLabel>{jsonFormInputObject.label}</NHSFormLabel>
-        <NHSFormHint>{jsonFormInputObject.help}</NHSFormHint>
-        <NHSFormControl name={jsonFormInputObject.name} type="text"
-                        key={jsonFormInputObject.key}/>
-    </NHSFormGroup>;
+    return <NHSFormsyInput name={jsonFormInputObject.name} key={jsonFormInputObject.key} label={jsonFormInputObject.label}
+                  help={jsonFormInputObject.help} type="text"/>;
 }
 
 function jsonFormIntegerInputToReactInput(jsonFormInputObject) {
-    return <NHSFormGroup>
-        <NHSFormLabel>{jsonFormInputObject.label}</NHSFormLabel>
-        <NHSFormHint>{jsonFormInputObject.help}</NHSFormHint>
-        <NHSFormControl name={jsonFormInputObject.name} type="number"
-                        key={jsonFormInputObject.key}/>
-    </NHSFormGroup>;
+    return <NHSFormsyInput name={jsonFormInputObject.name} key={jsonFormInputObject.key} label={jsonFormInputObject.label}
+                  help={jsonFormInputObject.help} type="number" validations="isInt" />;
 }
 
 function jsonFormDecimalInputToReactInput(jsonFormInputObject) {
-    return <NHSFormGroup>
-        <NHSFormLabel>{jsonFormInputObject.label}</NHSFormLabel>
-        <NHSFormHint>{jsonFormInputObject.help}</NHSFormHint>
-        <NHSFormControl name={jsonFormInputObject.name} type="number"
-                        key={jsonFormInputObject.key}/>
-    </NHSFormGroup>;
+    return <NHSFormsyInput name={jsonFormInputObject.name} key={jsonFormInputObject.key} label={jsonFormInputObject.label}
+                  help={jsonFormInputObject.help} type="number" validations="isFloat" />;
 }
 
 function jsonFormDatetimeInputToReactInput(jsonFormInputObject) {
-    return <NHSFormGroup>
-        <NHSFormLabel>{jsonFormInputObject.label}</NHSFormLabel>
-        <NHSFormHint>{jsonFormInputObject.help}</NHSFormHint>
-        <NHSFormControl name={jsonFormInputObject.name} type="datetime-local"
-                        key={jsonFormInputObject.key}/>
-    </NHSFormGroup>;
+    return <NHSFormsyInput name={jsonFormInputObject.name} key={jsonFormInputObject.key} label={jsonFormInputObject.label}
+                  help={jsonFormInputObject.help} type="datetime-local" />;
 }
 
 function jsonFormDateInputToReactInput(jsonFormInputObject) {
-    return <NHSFormGroup>
-        <NHSFormLabel>{jsonFormInputObject.label}</NHSFormLabel>
-        <NHSFormHint>{jsonFormInputObject.help}</NHSFormHint>
-        <NHSFormControl name={jsonFormInputObject.name} type="date"
-                        key={jsonFormInputObject.key}/>
-    </NHSFormGroup>;
+    return <NHSFormsyInput name={jsonFormInputObject.name} key={jsonFormInputObject.key} label={jsonFormInputObject.label}
+                  help={jsonFormInputObject.help} type="date"/>;
 }
 
 function jsonFormTimeInputToReactInput(jsonFormInputObject) {
-    return <NHSFormGroup>
-        <NHSFormLabel>{jsonFormInputObject.label}</NHSFormLabel>
-        <NHSFormHint>{jsonFormInputObject.help}</NHSFormHint>
-        <NHSFormControl name={jsonFormInputObject.name} type="time"
-                        key={jsonFormInputObject.key}/>
-    </NHSFormGroup>;
+    return <NHSFormsyInput name={jsonFormInputObject.name} key={jsonFormInputObject.key} label={jsonFormInputObject.label}
+                  help={jsonFormInputObject.help} type="time"/>;
 }
 
 function jsonFormTextInputWithSuggestionsAndNoFreeTextToReactInput(jsonFormInputObject) {
@@ -139,4 +106,4 @@ function jsonFormTextInputWithSuggestionsAndNoFreeTextToReactInput(jsonFormInput
     </div>;
 }
 
-export default JsonFormInputToNHSReact;
+export default JsonFormInputToReact;
