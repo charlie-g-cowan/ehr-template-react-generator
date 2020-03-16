@@ -19,20 +19,19 @@ class NHSFormsyInput extends React.Component {
     render() {
         // An error message is passed only if the component is invalid
         const errorMessage = this.props.errorMessage;
-        let errorClass, errorClass2;
+        let errorClass = 'nhsuk-form-group';
+        let errorClass2 = 'nhsuk-input';
         if (errorMessage) {
-            errorClass = "nhsuk-form-group--error";
-            errorClass2 = "nhsuk-input--error";
+            errorClass = "nhsuk-form-group nhsuk-form-group--error";
+            errorClass2 = "nhsuk-input nhsuk-input--error";
         }
         return (
             <NHSFormGroup className={errorClass}>
                 <NHSFormLabel>{this.props.label}</NHSFormLabel>
                 <NHSFormHint>{this.props.help}</NHSFormHint>
                 <span className="nhsuk-error-message">{errorMessage}</span>
-                {/*name key type props*/}
                 <NHSFormControl onChange={this.changeValue} value={this.props.value || ''} name={this.props.name}
-                                key={this.props.key} type={this.props.type} className={errorClass2}/>
-                {/*TODO: ERROR MESSAGE*/}
+                                key={this.props.key} type={this.props.type} className={errorClass2} validations={this.props.validations} validationErrors={this.props.validationErrors}/>
             </NHSFormGroup>
         );
     }
