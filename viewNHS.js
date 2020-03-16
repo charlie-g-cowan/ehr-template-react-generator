@@ -70,7 +70,8 @@ function jsonFormTextInputToReactInput(jsonFormInputObject) {
 
 function jsonFormIntegerInputToReactInput(jsonFormInputObject) {
     return <NHSFormsyInput name={jsonFormInputObject.name} key={jsonFormInputObject.key} label={jsonFormInputObject.label}
-                  help={jsonFormInputObject.help} type="number" validations="isInt" />;
+                  help={jsonFormInputObject.help} type="number" validations={{isInt: true}} validationErrors={{
+        isInt: 'This field must be an integer.'}}/>;
 }
 
 function jsonFormDecimalInputToReactInput(jsonFormInputObject) {
