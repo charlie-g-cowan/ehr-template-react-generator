@@ -1,5 +1,5 @@
 import React from "react";
-import { NHSFormControl, NHSFormGroup, NHSFormHint, NHSFormLabel } from "./react-styled-nhs/NHSComponents";
+import { NHSFormControl, NHSFormGroup, NHSFormHint, NHSFormLabel } from "./react-styled-nhs/src/NHSComponents";
 import { withFormsy } from "formsy-react";
 
 class NHSFormsyInput extends React.Component {
