@@ -4,6 +4,7 @@ import NHSFormsyCheckboxIndividual from "./NHSFormsyCheckboxIndividual";
 import NHSFormsyRadioGroup from "./NHSFormsyRadioGroup";
 
 function JsonFormInputToReact(jsonFormInputObject) {
+    if (!jsonFormInputObject) return null;
     switch (jsonFormInputObject.type) {
         case "options":
             return jsonFormOptionsToReactRadioList(jsonFormInputObject);
