@@ -1,7 +1,7 @@
 {
   "name": "ehr-template-react-generator",
   "version": "0.0.1",
-  "description": "",
+  "description": "Generates React from the JSON produced by ehr-template-processor. Supports NHS styling.",
   "main": "test/main.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
