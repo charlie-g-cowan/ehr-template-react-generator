@@ -15,8 +15,6 @@
   },
   "homepage": "https://github.com/charlie-g-cowan/ehr-template-react-generator#readme",
   "dependencies": {
-    "formsy-react": "^2.0.2",
-    "formsy-react-components": "^2.0.0-beta.5",
     "nhsuk-frontend": "^3.0.3"
   }
 }
