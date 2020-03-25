@@ -1,7 +1,7 @@
 import React from "react";
-import { NHSFormControl, NHSFormGroup, NHSFormHint, NHSFormLabel } from "./nhsuk-frontend-react/NHSComponents";
+import { NHSFormControl, NHSFormGroup, NHSFormHint, NHSFormLabel } from "./react-styled-nhs/NHSComponents";
 import { withFormsy } from "formsy-react";
-import NHSCheckbox from "./nhsuk-frontend-react/NHSCheckbox";
+import NHSCheckbox from "./react-styled-nhs/NHSCheckbox";
 
 class NHSFormsyCheckboxIndividual extends React.Component {
     constructor(props) {

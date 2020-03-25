@@ -1,8 +1,8 @@
 import React from "react";
-import { NHSFormControl, NHSFormGroup, NHSFormHint, NHSFormLabel } from "./nhsuk-frontend-react/NHSComponents";
+import { NHSFormControl, NHSFormGroup, NHSFormHint, NHSFormLabel } from "./react-styled-nhs/NHSComponents";
 import { withFormsy } from "formsy-react";
-import NHSCheckbox from "./nhsuk-frontend-react/NHSCheckbox";
-import { NHSFieldset, NHSFieldsetLegend } from "./nhsuk-frontend-react/NHSRadioGroup";
+import NHSCheckbox from "./react-styled-nhs/NHSCheckbox";
+import { NHSFieldset, NHSFieldsetLegend } from "./react-styled-nhs/NHSRadioGroup";
 
 class NHSFormsyRadioGroup extends React.Component {
     constructor(props) {
