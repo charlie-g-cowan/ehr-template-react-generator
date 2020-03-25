@@ -1,3 +1,3 @@
-[submodule "react-styled-nhs"]
-	path = react-styled-nhs
+[submodule "src/react-styled-nhs"]
+	path = src/react-styled-nhs
 	url = git@github.com:charlie-g-cowan/react-styled-nhs.git
