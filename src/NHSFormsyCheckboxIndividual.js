@@ -10,10 +10,6 @@ class NHSFormsyCheckboxIndividual extends React.Component {
     }
 
     changeValue(event) {
-        // setValue() will set the value of the component, which in
-        // turn will validate it and the rest of the form
-        // Important: Don't skip this step. This pattern is required
-        // for Formsy to work.
         this.props.setValue(event.target.checked);
     }
 

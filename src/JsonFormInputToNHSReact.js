@@ -3,7 +3,7 @@ import NHSFormsyInput from "./NHSFormsyInput";
 import NHSFormsyCheckboxIndividual from "./NHSFormsyCheckboxIndividual";
 import NHSFormsyRadioGroup from "./NHSFormsyRadioGroup";
 
-function JsonFormInputToReact(jsonFormInputObject) {
+function JsonFormInputToNHSReact(jsonFormInputObject) {
     if (!jsonFormInputObject) return null;
     switch (jsonFormInputObject.type) {
         case "options":
@@ -108,4 +108,4 @@ function jsonFormTextInputWithSuggestionsAndNoFreeTextToReactInput(jsonFormInput
     </div>;
 }
 
-export default JsonFormInputToReact;
+export default JsonFormInputToNHSReact;
