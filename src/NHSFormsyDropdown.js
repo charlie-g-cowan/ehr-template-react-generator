@@ -3,7 +3,7 @@ import { NHSFormControl, NHSFormGroup, NHSFormHint, NHSFormLabel } from "./react
 import { withFormsy } from "formsy-react";
 import NHSCheckbox from "./react-styled-nhs/src/NHSCheckbox";
 
-class NHSFormsyCheckboxIndividual extends React.Component {
+class NHSFormsyDropdown extends React.Component {
     constructor(props) {
         super(props);
         this.changeValue = this.changeValue.bind(this);
@@ -18,21 +18,16 @@ class NHSFormsyCheckboxIndividual extends React.Component {
         const errorMessage = this.props.errorMessage;
 
         return (
-            //TODO: key
             <NHSFormGroup>
-                {/*<NHSFormLabel>{this.props.label}</NHSFormLabel>*/}
-                {/*<NHSFormHint>{this.props.help}</NHSFormHint>*/}
-                {/*/!*name key type props*!/*/}
-                {/*<NHSFormControl onChange={this.changeValue} value={this.props.value || ''} name={this.props.name} key={this.props.key} type={this.props.type}/>*/}
-                {/*/!*TODO: ERROR MESSAGE*!/*/}
-
                 <NHSFormLabel>{this.props.label}</NHSFormLabel>
                 <NHSFormHint>{this.props.help}</NHSFormHint>
-                <NHSCheckbox name={this.props.name} value={true} key={this.props.key} {...this.props}/>
+                <select className="nhsuk-select" onChange={this.changeValue} name={this.props.name} key={this.props.key}>
+                    {this.props.children}
+                </select>
                 <span>{errorMessage}</span>
             </NHSFormGroup>
         );
     }
 }
 
-export default withFormsy(NHSFormsyCheckboxIndividual);
+export default withFormsy(NHSFormsyDropdown);
