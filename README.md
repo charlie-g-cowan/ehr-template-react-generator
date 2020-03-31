@@ -38,3 +38,11 @@ or
 ```js
     return JsonFormInputToNHSReact(inputToJsonFormInput(someSubTreeOfWebTemplate));
 ```
+
+## Author
+
+- [Charlie Cowan](https://github.com/charlie-g-cowan)
+
+## License
+
+Licensed under the MIT License. See LICENSE for more details.
